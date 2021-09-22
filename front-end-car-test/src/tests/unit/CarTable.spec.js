@@ -4,7 +4,7 @@ import CarTable from '../../components/CarTable.vue';
 
 test('displays message', () => {
   // mount() returns a wrapped Vue component we can interact with
-  const wrapper = mount(CarTable, {
+  const wrapper = shallowMount(CarTable, {
     propsData: {
     }
   })

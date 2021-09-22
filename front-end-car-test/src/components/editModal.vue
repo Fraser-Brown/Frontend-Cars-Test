@@ -11,6 +11,7 @@
               <v-text-field
                 v-model="updatedItem.make"
                 label="Make"
+                id="makeField"
               ></v-text-field>
             </v-col>
             <v-col
@@ -21,6 +22,7 @@
               <v-text-field
                 v-model="updatedItem.model"
                 label="Model"
+                id="modelField"
               ></v-text-field>
             </v-col>
             <v-col
@@ -31,6 +33,7 @@
               <v-text-field
                 v-model="updatedItem.year"
                 label="Year"
+                id="yearField"
               ></v-text-field>
             </v-col>
             <v-col
@@ -41,6 +44,7 @@
               <v-text-field
                 v-model="updatedItem.colour"
                 label="Colour"
+                id="colourField"
               ></v-text-field>
             </v-col>
           </v-row>
