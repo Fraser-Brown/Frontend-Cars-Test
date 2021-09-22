@@ -20,7 +20,17 @@
     export default {
         name: 'CarTable',
         data : () => ({
-            headers : ['Make', 'Model', 'Year', 'Colour'],
+            headers: [
+                {
+                    text: 'Make',
+                    align: 'start',
+                    sortable: false,
+                    value: 'make',
+                },
+                { text: 'model', value: 'model' },
+                { text: 'Year', value: 'year' },
+                { text: 'Colour', value: 'colour' },
+                ],
             items : [],
             newMake: '',
             newModel: '',
@@ -29,10 +39,18 @@
         }),
         mounted(){
             console.log('hello')
+            this.items = JSON.parse(localStorage.getItem('tableContents'));
         },
         methods : {
             submitCar(){
-                console.log(this.newMake);
+                var newCar = {
+                    make : this.newMake,
+                    model : this.newModel,
+                    year : this.newYear,
+                    colour : this.newColour,
+                }
+                this.items.push(newCar)
+                localStorage.setItem("tableContents", JSON.stringify(this.items));
             }
         }
     }
