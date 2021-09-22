@@ -23,8 +23,6 @@
           vertical
         ></v-divider>
         <v-spacer></v-spacer>
-        
-        
       </v-toolbar>
     </template>
     <template v-slot:item.actions="{ item, index }">
@@ -43,7 +41,6 @@
                 {
                     text: 'Make',
                     align: 'start',
-                    sortable: false,
                     value: 'make',
                 },
                 { text: 'model', value: 'model' },
@@ -56,6 +53,7 @@
             newModel: '',
             newYear: '',
             newColour: '',
+            showEditModal: false
         }),
         mounted(){
             console.log('hello')
