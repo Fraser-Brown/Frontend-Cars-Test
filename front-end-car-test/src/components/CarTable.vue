@@ -1,5 +1,11 @@
 <template>
     <div style="margin: 20px 20px 20px 20px">
+      <EditModal 
+        v-if="showEditModal" 
+        :editedItem="editedItem" 
+        v-on:closeModal="closeModal()"
+        v-on:updateEntry="updateEntry($event)">
+        </EditModal>
         <v-form>
             <v-text-field label='Make' v-model="newMake"></v-text-field>
             <v-text-field label='Model' v-model="newModel"></v-text-field>
@@ -34,8 +40,13 @@
 </template>
 
 <script>
+import EditModal from './editModal';
+
     export default {
         name: 'CarTable',
+        components: {
+          EditModal,
+        },
         data : () => ({
             headers: [
                 {
@@ -53,10 +64,11 @@
             newModel: '',
             newYear: '',
             newColour: '',
-            showEditModal: false
+            showEditModal: false,
+            editedItem: null,
+            editedIndex: -1
         }),
         mounted(){
-            console.log('hello')
             this.items = JSON.parse(localStorage.getItem('tableContents')) || [];
         },
         methods : {
@@ -74,7 +86,9 @@
             },
             editItem(item, index){
                 console.log(item, index)
-
+                this.editedItem = item;
+                this.showEditModal = true;
+                this.editedIndex = index;
             },
             deleteItem(index){
                 console.log(index)
@@ -87,6 +101,14 @@
                 this.newModel = ''
                 this.newYear =''
                 this.newColour = ''
+            },
+            closeModal(){
+              this.showEditModal = false
+            },
+            updateEntry(item){
+              this.items[this.editedIndex] = item;
+              localStorage.setItem("tableContents", JSON.stringify(this.items));
+              this.closeModal()
             }
         }
     }

@@ -9,7 +9,6 @@
 
     <v-main>
       <CarTable></CarTable>
-      <p>Hello there</p>
     </v-main>
   </v-app>
 </template>

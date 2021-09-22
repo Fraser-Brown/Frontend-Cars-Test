@@ -1,6 +1,6 @@
 // Import the `mount()` method from Vue Test Utils
-import { mount } from '@vue/test-utils'
-import {CarTable} from '../components/CarTable'
+import { shallowMount } from '@vue/test-utils'
+import CarTable from '../../components/CarTable.vue';
 
 test('displays message', () => {
   // mount() returns a wrapped Vue component we can interact with
