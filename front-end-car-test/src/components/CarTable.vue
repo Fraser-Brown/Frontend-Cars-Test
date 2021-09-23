@@ -51,7 +51,7 @@
           </template>
           <template v-slot:item.actions="{ item, index }">
             <v-btn @click="editItem(item, index)">edit</v-btn>
-            <v-btn @click="deleteItem(index)">delete</v-btn>
+            <v-btn @click="deleteItem(item.id)">delete</v-btn>
           </template>
         </v-data-table>
   </div>
@@ -89,6 +89,7 @@ import EditModal from './editModal';
         methods : {
             submitCar(){
                 var newCar = {
+                    id : Date.now(),
                     make : this.newMake,
                     model : this.newModel,
                     year : this.newYear,
@@ -105,10 +106,9 @@ import EditModal from './editModal';
                 this.showEditModal = true;
                 this.editedIndex = index;
             },
-            deleteItem(index){
-                console.log(index)
-                this.items.splice(index, 1);
-                console.log(this.items)
+            deleteItem(id){
+                this.items = this.items.filter(item => item.id != id)
+                
                 localStorage.setItem("tableContents", JSON.stringify(this.items));
             },
             resetForm(){
