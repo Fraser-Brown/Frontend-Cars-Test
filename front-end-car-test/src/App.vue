@@ -18,13 +18,8 @@ import CarTable from './components/CarTable';
 
 export default {
   name: 'App',
-
   components: {
     CarTable,
-  },
-
-  data: () => ({
-    //
-  }),
+  }
 };
 </script>

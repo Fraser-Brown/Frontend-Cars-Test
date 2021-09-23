@@ -7,6 +7,7 @@
         v-on:closeModal="closeModal()"
         v-on:updateEntry="updateEntry($event)">
         </EditModal>
+
         <v-form id="newEntry">
             <h2>Create new Entry </h2>
             <v-text-field label='Make' v-model="newMake" id="entryMake"></v-text-field>
@@ -15,6 +16,7 @@
             <v-text-field label='Colour' v-model="newColour" id="entryColour"></v-text-field>
             <v-btn @click="submitCar()" id="submitButton">Submit</v-btn>
         </v-form>
+
         <v-spacer></v-spacer>
         <h2> Search </h2>
         <v-text-field
@@ -24,34 +26,34 @@
         label="Search"
         single-line
         hide-details
-      ></v-text-field>
-      <v-spacer></v-spacer>
-      <h2> Table </h2>
-   <v-data-table
-    :headers="headers"
-    :items="items"
-    :search="searchTerm"
-    sort-by="model"
-    class="elevation-1"
-    id="carTable"
-  >
-    <template v-slot:top>
-      <v-toolbar
-        flat
-      >
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        ></v-text-field>
         <v-spacer></v-spacer>
-      </v-toolbar>
-    </template>
-    <template v-slot:item.actions="{ item, index }">
-      <v-btn @click="editItem(item, index)">edit</v-btn>
-      <v-btn @click="deleteItem(index)">delete</v-btn>
-    </template>
-  </v-data-table>
+        <h2> Table </h2>
+        <v-data-table
+          :headers="headers"
+          :items="items"
+          :search="searchTerm"
+          sort-by="model"
+          class="elevation-1"
+          id="carTable"
+          >
+          <template v-slot:top>
+            <v-toolbar
+              flat
+            >
+              <v-divider
+                class="mx-4"
+                inset
+                vertical
+              ></v-divider>
+              <v-spacer></v-spacer>
+            </v-toolbar>
+          </template>
+          <template v-slot:item.actions="{ item, index }">
+            <v-btn @click="editItem(item, index)">edit</v-btn>
+            <v-btn @click="deleteItem(index)">delete</v-btn>
+          </template>
+        </v-data-table>
   </div>
 </template>
 

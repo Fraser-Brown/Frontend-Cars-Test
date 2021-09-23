@@ -83,18 +83,15 @@
           updatedItem : {}
         }),
         mounted(){
-          console.log(this.editedItem)
           this.updatedItem = this.editedItem;
         },
         methods : {
            close(){
-             console.log('closing')
               this.$emit('closeModal');
            },
            submit(){
               this.$emit('updateEntry', this.updatedItem);
            }
-
         }
     }
 </script>
