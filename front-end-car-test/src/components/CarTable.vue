@@ -7,15 +7,28 @@
         v-on:updateEntry="updateEntry($event)">
         </EditModal>
         <v-form>
+            <h2>Create new Entry </h2>
             <v-text-field label='Make' v-model="newMake"></v-text-field>
             <v-text-field label='Model' v-model="newModel"></v-text-field>
             <v-text-field label='Year' v-model="newYear"></v-text-field>
             <v-text-field label='Colour' v-model="newColour"></v-text-field>
             <v-btn @click="submitCar()">Submit</v-btn>
         </v-form>
+        <v-spacer></v-spacer>
+        <h2> Search </h2>
+        <v-text-field
+        v-model="searchTerm"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+      <v-spacer></v-spacer>
+      <h2> Table </h2>
    <v-data-table
     :headers="headers"
     :items="items"
+    :search="searchTerm"
     sort-by="model"
     class="elevation-1"
   >
@@ -66,7 +79,8 @@ import EditModal from './editModal';
             newColour: '',
             showEditModal: false,
             editedItem: null,
-            editedIndex: -1
+            editedIndex: -1,
+            searchTerm: ''
         }),
         mounted(){
             this.items = JSON.parse(localStorage.getItem('tableContents')) || [];
