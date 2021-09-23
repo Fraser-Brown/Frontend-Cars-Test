@@ -50,7 +50,7 @@ describe('example to-do app', () => {
         })
       })
 
-      it('Can sort multiple cars', () => {
+      it('Can filter with search terms', () => {
         createCar('alpha', 'a', '2000', 'red')
         createCar('bravo', 'b', '2001', 'red')
         createCar('charlie', 'c', '2002', 'red')
@@ -61,10 +61,9 @@ describe('example to-do app', () => {
             cy.get('tr').eq(0).contains('alpha')
         })
 
-        cy.get('.sortable').eq(0).click({force : true});
-
+        cy.get('#searchBar').type('bravo')
         cy.get('tbody').within( () => {
-            cy.get('tr').eq(0).contains('echo')
+            cy.get('tr').contains('bravo')
         })
       })
 })
