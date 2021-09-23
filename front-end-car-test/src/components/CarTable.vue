@@ -6,13 +6,13 @@
         v-on:closeModal="closeModal()"
         v-on:updateEntry="updateEntry($event)">
         </EditModal>
-        <v-form>
+        <v-form id="newEntry">
             <h2>Create new Entry </h2>
-            <v-text-field label='Make' v-model="newMake"></v-text-field>
-            <v-text-field label='Model' v-model="newModel"></v-text-field>
-            <v-text-field label='Year' v-model="newYear"></v-text-field>
-            <v-text-field label='Colour' v-model="newColour"></v-text-field>
-            <v-btn @click="submitCar()">Submit</v-btn>
+            <v-text-field label='Make' v-model="newMake" id="entryMake"></v-text-field>
+            <v-text-field label='Model' v-model="newModel" id="entryModel"></v-text-field>
+            <v-text-field label='Year' v-model="newYear" id="entryYear"></v-text-field>
+            <v-text-field label='Colour' v-model="newColour" id="entryColour"></v-text-field>
+            <v-btn @click="submitCar()" id="submitButton">Submit</v-btn>
         </v-form>
         <v-spacer></v-spacer>
         <h2> Search </h2>
@@ -31,6 +31,7 @@
     :search="searchTerm"
     sort-by="model"
     class="elevation-1"
+    id="carTable"
   >
     <template v-slot:top>
       <v-toolbar
@@ -62,11 +63,7 @@ import EditModal from './editModal';
         },
         data : () => ({
             headers: [
-                {
-                    text: 'Make',
-                    align: 'start',
-                    value: 'make',
-                },
+                { text: 'Make', align: 'start', value: 'make'},
                 { text: 'model', value: 'model' },
                 { text: 'Year', value: 'year' },
                 { text: 'Colour', value: 'colour' },
