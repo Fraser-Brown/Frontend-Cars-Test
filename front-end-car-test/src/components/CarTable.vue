@@ -18,6 +18,7 @@
         <h2> Search </h2>
         <v-text-field
         v-model="searchTerm"
+        id="searchBar"
         append-icon="mdi-magnify"
         label="Search"
         single-line

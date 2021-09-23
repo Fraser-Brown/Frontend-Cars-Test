@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils'
 import CarTable from '../../components/CarTable.vue';
 
-test('displays correctly', () => {
+test('displays page correctly', () => {
   // mount() returns a wrapped Vue component we can interact with
   const wrapper = mount(CarTable, {
     propsData: {
@@ -27,6 +27,8 @@ test('displays correctly', () => {
   const newEntrySubmit = wrapper.find('#submitButton')
   expect(newEntrySubmit.exists()).toBe(true)
 
+  const searchBar = wrapper.find('#searchBar')
+  expect(searchBar.exists()).toBe(true)
   const carTable = wrapper.find('#carTable')
   expect(carTable.exists()).toBe(true)
 })
