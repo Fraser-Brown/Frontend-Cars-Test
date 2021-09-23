@@ -9,7 +9,7 @@ function createCar(make, model, year, colour){
     cy.get('#submitButton').click();
 }
 
-describe('example to-do app', () => {
+describe('Cars table testing', () => {
     it('Can add a car to the table', () => {
       cy.visit('http://localhost:8080/')
       createCar('testMake', 'testModel', '2000', 'red')
@@ -39,6 +39,20 @@ describe('example to-do app', () => {
             cy.get('tr').contains('2001')
             cy.get('tr').contains('blue')
         })
+      })
+
+      it('Can cancel editing a car', () => {
+        cy.get('tbody').within( () => {
+            cy.get('button').eq(0).click()
+        })
+
+        cy.get('#makeField').clear().type('editMake');
+        cy.get('#modelField').clear().type('editModel');
+        cy.get('#yearField').clear().type('2001');
+        cy.get('#colourField').clear().type('blue');
+  
+        cy.get('#cancelEdit').click();
+        cy.get('#editModal').should('not.exist')
       })
     
       it('Can delete a car', () => {

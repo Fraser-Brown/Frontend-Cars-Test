@@ -65,6 +65,7 @@
           color="blue darken-1"
           text
           @click="close()"
+          id="cancelEdit"
         >
           Cancel
         </v-btn>

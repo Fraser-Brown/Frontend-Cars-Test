@@ -1,7 +1,8 @@
 <template>
     <div style="margin: 20px 20px 20px 20px">
       <EditModal 
-        v-if="showEditModal" 
+        v-if="showEditModal"
+        id="editModal"
         :editedItem="editedItem" 
         v-on:closeModal="closeModal()"
         v-on:updateEntry="updateEntry($event)">
